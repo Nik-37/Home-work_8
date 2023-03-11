@@ -20,36 +20,41 @@
 int[,,] GetMatrix(int pages, int rows, int cols, int min, int max)
 {
   int[,,] matrix = new int[pages, rows, cols];
+
   for (int n = 0; n < pages; n++)
   {
     for (int i = 0; i < rows; i++)
     {
       for (int j = 0; j < cols; j++)
-        {
+      {
         matrix[n,i, j] = new Random().Next(min, max + 1);
-        }
+      }
     }
   }
-return matrix;
+
+  return matrix;
 }
 
 /// <summary>
 /// Метод печатает матрицу которую передали на вход
 /// </summary>
 /// <param name="inputMatrix"> Трехмерный массив </param>
+
 void PrintMatrix(int[,,] inputMatrix)
 {
-for(int n = 0; n < inputMatrix.GetLength(0); n++)
-{
-  for(int i = 0; i < inputMatrix.GetLength(1); i++)
+  for(int n = 0; n < inputMatrix.GetLength(0); n++)
   {
-    for(int j = 0; j < inputMatrix.GetLength(1); j++)
+    for(int i = 0; i < inputMatrix.GetLength(1); i++)
     {
-      Console.Write("{0}({1},{2},{3})   ", inputMatrix[n,i,j],n,i,j);
+      for(int j = 0; j < inputMatrix.GetLength(1); j++)
+      {
+        Console.Write("{0}({1},{2},{3})   ", inputMatrix[n,i,j],n,i,j);
+      }
+
+      Console.WriteLine();
     }
     Console.WriteLine();
   }
-}
 }
 //1. Заполним матрицу
 int[,,] resultMatrix = GetMatrix(2,2,2,10,99);
