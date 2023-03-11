@@ -1,10 +1,5 @@
 ﻿/*Задача 58: Задайте две матрицы. Напишите программу, которая будет находить произведение двух матриц.
-Например, даны 2 матрицы:
-2 4 | 3 4
-3 2 | 3 3
-Результирующая матрица будет:
-18 20
-15 18
+
 *//// <summary>
 /// данный метод заполняет двумерный массив числами от min до max
 /// </summary>
@@ -15,23 +10,27 @@
 /// <returns>Заполненный двумерный массив целых чисел</returns>
 /// /*При оценивании учитывается чистота программного кода (выбор имени и стиля написания). Учитывается наличие Гитхаба. summary ЖЕЛАТЕЛЬНЫ
 /// */
+
 int[,] GetMatrix(int rows, int cols, int min, int max)
 {
-int[,] matrix = new int[rows, cols];
-for (int i = 0; i < rows; i++)
-{
-  for (int j = 0; j < cols; j++)
+  int[,] matrix = new int[rows, cols];
+
+  for (int i = 0; i < rows; i++)
   {
-    matrix[i, j] = new Random().Next(min, max + 1);
+    for (int j = 0; j < cols; j++)
+    {
+      matrix[i, j] = new Random().Next(min, max + 1);
+    }
   }
-}
-return matrix;
+
+  return matrix;
 }
 
 /// <summary>
 /// Метод печатает матрицу которую передали на вход
 /// </summary>
 /// <param name="inputMatrix"> Двумерный массив </param>
+
 void PrintMatrix(int[,] inputMatrix)
 {
   for (int i = 0; i < inputMatrix.GetLength(0); i++)
@@ -55,7 +54,7 @@ for(int i = 0; i < Matrix_A.GetLength(0); i++)
   {
     for(int k = 0; k < Matrix_B.GetLength(0); k++)
     {
-    resultMatrix[i,j]+= Matrix_A[i,k] * Matrix_B[k,j];
+      resultMatrix[i,j]+= Matrix_A[i,k] * Matrix_B[k,j];
     }
   }
 }
