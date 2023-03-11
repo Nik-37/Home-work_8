@@ -17,17 +17,20 @@
 /// <returns>Заполненный двумерный массив целых чисел</returns>
 /// /*При оценивании учитывается чистота программного кода (выбор имени и стиля написания). Учитывается наличие Гитхаба. summary ЖЕЛАТЕЛЬНЫ
 /// */
+/// 
 int[,] GetMatrix(int rows, int cols, int min, int max)
 {
-int[,] matrix = new int[rows, cols];
-for (int i = 0; i < rows; i++)
-{
-  for (int j = 0; j < cols; j++)
+  int[,] matrix = new int[rows, cols];
+
+  for (int i = 0; i < rows; i++)
   {
-    matrix[i, j] = new Random().Next(min, max + 1);
+    for (int j = 0; j < cols; j++)
+    {
+      matrix[i, j] = new Random().Next(min, max + 1);
+    }
   }
-}
-return matrix;
+
+  return matrix;
 }
 
 /// <summary>
@@ -58,16 +61,18 @@ int sumMin = Int32.MaxValue; // мин сумма
 for(int i = 0; i < resultMatrix.GetLength(0); i++)
 {
   int rowSum = 0; //переменная подсчета суммы в строке
+
   for(int j = 0; j < resultMatrix.GetLength(1); j++)
   {
-  rowSum+= resultMatrix[i,j];
+    rowSum+= resultMatrix[i,j];
   }
-//проверка, является ли сумма строки минимальной среди обработанных ранее
-if(rowSum < sumMin)
+
+  //проверка, является ли сумма строки минимальной среди обработанных ранее 
+  if(rowSum < sumMin)
   {
-//запомним новый минимум и индекс этой строки
-  sumMin = rowSum;
-  iMin = i;
+    //запомним новый минимум и индекс этой строки
+    sumMin = rowSum;
+    iMin = i;
   }
 }
 
